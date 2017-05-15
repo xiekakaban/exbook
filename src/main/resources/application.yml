@@ -1,0 +1,10 @@
+spring:
+  profiles:
+    active: dev
+  thymeleaf:
+    mode: HTML5
+mybatis:
+  type-aliases-package: com.st.exbook.entity
+  mapperLocations: classpath:mapper/*.xml
+  config-locations: classpath:config/mybatis-config.xml
+
