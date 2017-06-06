@@ -2,16 +2,25 @@ package com.st.exbook.entity;
 
 import com.st.exbook.util.GenerateId;
 
+import javax.persistence.Column;
+import javax.persistence.Id;
+import javax.persistence.MappedSuperclass;
 import java.util.Date;
 
 /**
  * Created by e604845 on 5/15/2017.
  */
-public class AbstractEntity {
+@MappedSuperclass
+public abstract class AbstractEntity {
 
 
+    @Id
     protected String id;
+
+    @Column(name="create_time")
     protected Date createTime;
+
+    @Column(name="last_modify_time")
     protected Date lastModifyTime;
 
     public AbstractEntity() {

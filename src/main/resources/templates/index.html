@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" layout:decorator="fragments/base_layout" th:with="title='首页'">
+
+<body>
+    <div layout:fragment="content" class="container">
+        <div id="msg">
+            {{message}}
+        </div>
+    </div>
+</body>
+
+<script layout:fragment="lastjs">
+    var msgVM = new Vue({
+        el:"#msg",
+        data:{
+            message:"GetingMessage"
+        },
+        created:function() {
+            $ajaxJsonGet("/aj/get/welcome", function (data) {
+                console.log(data);
+                if(data.backData != null){
+                    msgVM.message = data.backData;
+                }
+            });
+        }
+    });
+</script>
+
+</html>

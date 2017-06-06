@@ -4,5 +4,3 @@ spring:
       url: jdbc:mysql://localhost:3369/exbook_dev?useUnicode=true&characterEncoding=utf8
       username: root
       password: R25940151
-
-
