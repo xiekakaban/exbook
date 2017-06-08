@@ -11,11 +11,11 @@ import java.util.Date;
 public class UserRelationshipMap extends AbstractMapEntity{
 
     @ManyToOne
-    @JoinColumn(name="u1",referencedColumnName = "id",nullable = false)
+    @JoinColumn(name="u1")
     private UserEntity u1;
 
     @ManyToOne
-    @JoinColumn(name="u2",referencedColumnName = "id",nullable = false)
+    @JoinColumn(name="u2")
     private UserEntity u2;
 
     @Column(name="create_time")
@@ -52,5 +52,30 @@ public class UserRelationshipMap extends AbstractMapEntity{
 
     public void setCreateTime(Date createTime) {
         this.createTime = createTime;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if(obj == null){
+            return false;
+        }
+        if(!(obj instanceof UserRelationshipMap)){
+            return false;
+        }
+        UserRelationshipMap other = (UserRelationshipMap)obj;
+        if ((this.u1 == null) ? (other.u1 != null) : !this.u1.equals(other.u1)) {
+            return false;
+        }
+        if ((this.u2 == null) ? (other.u2 != null) : !this.u2.equals(other.u2)) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = u1.hashCode();
+        result = 31 * result + u2.hashCode();
+        return result;
     }
 }

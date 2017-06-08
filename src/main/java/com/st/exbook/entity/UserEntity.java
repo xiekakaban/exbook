@@ -33,10 +33,12 @@ public class UserEntity extends AbstractEntity{
     @Column(name = "sex")
     String sex;
 
-    @OneToMany(fetch = FetchType.EAGER,mappedBy = "u2")
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name="u1",referencedColumnName = "id")
     Set<UserRelationshipMap> fans; //粉丝
 
-    @OneToMany(fetch = FetchType.EAGER,mappedBy = "u1")
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name="u2",referencedColumnName = "id")
     Set<UserRelationshipMap> following; //自己关注的人
 
 
@@ -131,8 +133,8 @@ public class UserEntity extends AbstractEntity{
 
     public void addFollowing(UserEntity u1){
         UserRelationshipMap ship = new UserRelationshipMap(u1,this);
-        if(!(this.getFans().contains(ship))){
-            this.getFans().add(ship);
+        if(!(this.getFollowing().contains(ship))){
+            this.getFollowing().add(ship);
         }
     }
 
@@ -142,4 +144,6 @@ public class UserEntity extends AbstractEntity{
             this.getFans().add(ship);
         }
     }
+
+
 }

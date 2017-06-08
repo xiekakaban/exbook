@@ -1,6 +1,7 @@
 package com.st.exbook.repository;
 
 import com.st.exbook.entity.UserEntity;
+import com.st.exbook.entity.UserRelationshipMap;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
@@ -19,7 +20,6 @@ public interface UserRepository extends AbstractRepository<UserEntity> {
     UserEntity findByUsername(String username);
 
     UserEntity findByCreateTimeBetween(Date startDate,Date endDate);
-
 
 
 }

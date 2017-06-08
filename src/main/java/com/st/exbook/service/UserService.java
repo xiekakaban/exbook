@@ -2,6 +2,7 @@ package com.st.exbook.service;
 
 import com.st.exbook.dto.UserBaseVO;
 import com.st.exbook.entity.UserEntity;
+import com.st.exbook.entity.UserRelationshipMap;
 import org.apache.catalina.User;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -30,4 +31,6 @@ public interface UserService {
     UserEntity findUserByCreateTime(Date startTime,Date endTime);
 
     UserEntity checkLogin(String username,String password);
+
+    UserRelationshipMap addUserRelationShio(UserEntity u1,UserEntity u2);
 }

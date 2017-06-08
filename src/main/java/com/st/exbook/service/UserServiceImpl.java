@@ -2,6 +2,7 @@ package com.st.exbook.service;
 
 import com.st.exbook.dto.UserBaseVO;
 import com.st.exbook.entity.UserEntity;
+import com.st.exbook.entity.UserRelationshipMap;
 import com.st.exbook.repository.UserRepository;
 import com.st.exbook.util.SecurityUtil;
 import com.st.exbook.util.StringUtil;
@@ -72,6 +73,11 @@ public class UserServiceImpl implements UserService{
         if(u != null && u.getPassword().equals(SecurityUtil.eccryptMD5(password))){
             return u;
         }
+        return null;
+    }
+
+    @Override
+    public UserRelationshipMap addUserRelationShio(UserEntity u1, UserEntity u2) {
         return null;
     }
 

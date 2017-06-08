@@ -35,15 +35,21 @@ public class UserServiceOOCTest extends ExbookApplicationTests {
 
     @Test
     @Transactional
+    @Rollback(false)
     public void testUpdateUser(){
-        UserEntity u1 = userService.findUserById("b6a0ff05-f4b8-47c3-b130-38b43f6319aa");
-        UserEntity u2 = userService.findUserById("402f6cfe-efb0-421b-ab47-290a1ff1e2af");
-        UserEntity u3 = userService.findUserById("cc2f2751-c4d1-4ab2-99fb-41c5bafc85f9");
+        UserEntity u1 = userService.findUserById("b6a0ff05-f4b8-47c3-b130-38b43f6319aa"); //3
+        UserEntity u2 = userService.findUserById("402f6cfe-efb0-421b-ab47-290a1ff1e2af"); //5
+        UserEntity u3 = userService.findUserById("cc2f2751-c4d1-4ab2-99fb-41c5bafc85f9"); //xiekakaban
 
-        u1.addFollowing(u3);
         u1.addFans(u2);
+        u2.addFollowing(u3);
 
         userService.updateUser(u1);
+        userService.updateUser(u2);
+        userService.updateUser(u3);
+
+
+
     }
 
     @Test
@@ -53,9 +59,13 @@ public class UserServiceOOCTest extends ExbookApplicationTests {
     }
 
     @Test
+    @Transactional
     public void testFindUserById(){
         UserEntity u = userService.findUserById("b6a0ff05-f4b8-47c3-b130-38b43f6319aa");
-        System.out.println(StringUtil.GsonSerializeNulls(u));
+        u.getFans();
+        u.getFollowing();
+        Gson gson = new Gson();
+        System.out.println(gson.toJson(u));
     }
 
     @Test
