@@ -6,7 +6,13 @@
         <div id="msg">
             {{message}}
         </div>
+        <div id="mMsg">
+            <p th:text="${currentUser.id}"></p>
+            <p th:utext="${currentUser.username}">Welcome to our grocery store!</p>
+
+        </div>
     </div>
+
 </body>
 
 <script layout:fragment="lastjs">
@@ -14,15 +20,8 @@
         el:"#msg",
         data:{
             message:"GetingMessage"
-        },
-        created:function() {
-            $ajaxJsonGet("/aj/get/welcome", function (data) {
-                console.log(data);
-                if(data.backData != null){
-                    msgVM.message = data.backData;
-                }
-            });
         }
+
     });
 </script>
 

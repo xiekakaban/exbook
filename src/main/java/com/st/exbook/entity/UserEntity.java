@@ -144,6 +144,4 @@ public class UserEntity extends AbstractEntity{
             this.getFans().add(ship);
         }
     }
-
-
 }
